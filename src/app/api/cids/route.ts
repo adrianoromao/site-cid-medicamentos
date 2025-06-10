@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import dbData from '@/lib/db.json';
 
-// Adicione esta linha para informar ao Next.js que esta rota é dinâmica
+// Configuração explícita para rota dinâmica
 export const dynamic = 'force-dynamic';
 
 // Define a estrutura esperada para os dados do JSON
@@ -30,8 +30,9 @@ function mapDbToResponse(entry: DBEntry): CIDResponse {
 
 export async function GET(request: NextRequest) {
   try {
-    const searchParams = request.nextUrl.searchParams;
-    const query = searchParams.get('q');
+    // Obter a URL completa e extrair o parâmetro de consulta manualmente
+    const url = new URL(request.url);
+    const query = url.searchParams.get('q');
 
     // Usa os dados importados do db.json
     const allData: DBEntry[] = dbData;

@@ -1,9 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import dbData from '@/lib/db.json';
 
-// Adicione esta linha para informar ao Next.js que esta rota é dinâmica
+// Configuração explícita para rota dinâmica
 export const dynamic = 'force-dynamic';
-
 
 // Define a estrutura esperada para os dados do JSON
 interface DBEntry {
